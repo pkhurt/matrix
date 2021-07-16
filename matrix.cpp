@@ -68,6 +68,16 @@ class Matrix {
             }
         }
 
+        Matrix addition(Matrix m2) {
+            Matrix result_m(this->get_cols(), this->get_rows(), 0); // initialize result matrix
+            for (int row = 0; row < this->get_rows(); row++) {
+                for (int col = 0; col < this->get_cols(); col++) {
+                    result_m.m_matrix[row][col] = this->m_matrix[row][col] + m2.m_matrix[row][col];
+                }
+            }
+            return result_m;
+        }
+
         /*Matrix multiply(Matrix matrix_term) {
             Matrix result_matrix(matrix_term[0].size(), matrix_term.size(), 0);
             for (auto row : this->m_matrix)
@@ -97,4 +107,8 @@ int main() {
     m3.print_matrix();
     m3.transpose();
     m3.print_matrix();
+
+    // test4 add two matrices
+    Matrix result = m1.addition(m2);
+    result.print_matrix();
 }
