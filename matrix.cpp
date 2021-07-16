@@ -51,11 +51,10 @@ class Matrix {
 
         void set_value_at(unsigned row, unsigned col, double value) {
             int size = this->m_matrix.size();
-            if (row >= size || col >= size) {
-                // throw error
-            }
-            else {
+            try {
                 this->m_matrix[row][col] = value;
+            } catch (std::exception &exc) {
+                std::cerr << "You tried to insert a value in a position that does not exist." << exc.what() << endl;
             }
         }
 
@@ -77,12 +76,24 @@ class Matrix {
             return result_m;
         }
 
-        /*Matrix multiply(Matrix matrix_term) {
-            Matrix result_matrix(matrix_term[0].size(), matrix_term.size(), 0);
-            for (auto row : this->m_matrix)
+        Matrix multiply(Matrix matrix_term) {
+            Matrix<int> result_matrix(3, 3, 0);
+            int tmp_value = 0;
+            for (int row = 0; row < this->get_rows(); row++) {
+                for (int col = 0; col < matrix_term.get_cols(); col++) {
+                    tmp_value = this->m_matrix[row][col] * matrix_term.m_matrix[col][row];
+                    result_matrix.m_matrix[row][col] = tmp_value;
+                }
+            }
 
             return result_matrix;
-        }*/
+        }
+
+        Matrix square() {
+            Matrix<int> tmp_matrix (this->m_rows, this->m_cols, 0);
+            tmp_matrix = this->multiply(this);
+            return this;
+        }
 
 };
 
@@ -122,6 +133,16 @@ int main() {
     result.print_matrix();
 
     // test5 create identy matrix
-    IdentityMatrix i1 (4);
+    IdentityMatrix i1 (3);
     i1.print_matrix();
+
+    // test6 create vector
+    Matrix<int> vec(3,1,0);
+    vec.print_matrix();
+
+    // test7 multiplication
+    Matrix<int> multi = m3.multiply(m3);
+    multi.print_matrix();
+
+    Matrix<int> squared = m3.square();
 }
