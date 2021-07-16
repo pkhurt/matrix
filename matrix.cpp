@@ -4,16 +4,16 @@
 
 using namespace std;
 
+template <typename T>
 class Matrix {
-    private:
+    public:
         unsigned int m_rows;
         unsigned int m_cols;
-        double initial_value = 0;
+        T initial_value = 0;
 
-        vector<vector<double>> m_matrix;
-    
-    public:
-        Matrix(unsigned rows, unsigned cols, double initial_value) {
+        vector<vector<T>> m_matrix;
+
+        Matrix(unsigned rows, unsigned cols, T initial_value) {
             this->m_rows = rows;
             this->m_cols = cols;
             this->initial_value = initial_value;
@@ -24,7 +24,7 @@ class Matrix {
             }
         }
 
-        Matrix(vector<vector<double>> values) {
+        Matrix(vector<vector<T>> values) {
             this->m_cols = values[0].size();
             this->m_rows = values.size();
             this->m_matrix = values;
@@ -60,15 +60,14 @@ class Matrix {
         }
 
         void transpose() {
-            vector<vector<double>> tmp_matrix = m_matrix;
             for (int row = 0; row < this->m_rows; row++) {
                 for (int col = 0; col < this->m_cols; col++) {
-                    this->set_value_at(col, row, tmp_matrix[row][col]);
+                    this->set_value_at(col, row, this->m_matrix[row][col]);
                 }
             }
         }
 
-        Matrix addition(Matrix m2) {
+        Matrix add_matrix(Matrix m2) {
             Matrix result_m(this->get_cols(), this->get_rows(), 0); // initialize result matrix
             for (int row = 0; row < this->get_rows(); row++) {
                 for (int col = 0; col < this->get_cols(); col++) {
@@ -87,9 +86,19 @@ class Matrix {
 
 };
 
+class IdentityMatrix : public Matrix<int> {
+    public:
+        IdentityMatrix(unsigned extent) : Matrix<int>(extent, extent, 0) {
+            // fill diagonal with 1
+            for (int idx = 0; idx < this->get_rows(); idx++) {
+                this->m_matrix[idx][idx] = 1;
+            }
+        }
+};
+
 int main() {
     // test1 create empty matrix
-    Matrix m1(2,2,0);
+    Matrix<int> m1(2,2,0);
     cout << m1.get_cols() << " x " << m1.get_rows() << " initialized" << endl;
     //m1.print_matrix();
     m1.set_value_at(1,0,1);
@@ -97,18 +106,22 @@ int main() {
 
     // test2 create matrix with 2x2 values
     //vector<vector<int>> input_vector1,2], [3,4]];
-    Matrix m2({{1,2},{3,4}});
+    Matrix<int> m2({{1,2},{3,4}});
     m2.print_matrix();
     m2.transpose();
     m2.print_matrix();
 
     // test3 create a 3x3 matrix with values
-    Matrix m3({{1,2,3}, {4,5,6}, {7,8,9}});
+    Matrix<int> m3({{1,2,3}, {4,5,6}, {7,8,9}});
     m3.print_matrix();
     m3.transpose();
     m3.print_matrix();
 
     // test4 add two matrices
-    Matrix result = m1.addition(m2);
+    Matrix<int> result = m1.add_matrix(m2);
     result.print_matrix();
+
+    // test5 create identy matrix
+    IdentityMatrix i1 (4);
+    i1.print_matrix();
 }
