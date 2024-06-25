@@ -41,6 +41,4 @@ int main() {
     // test7 multiplication
     Matrix<int> multi = m3.multiply(m3);
     multi.print_matrix();
-
-    Matrix<int> squared = m3.square();
 }
