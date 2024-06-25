@@ -1,6 +1,7 @@
 build/*
 lib/*
 .vscode/*
+*.cmake
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
