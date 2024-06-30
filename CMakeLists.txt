@@ -1,31 +1,40 @@
-cmake_minimum_required(VERSION 3.14)
-project(my_project)
+cmake_minimum_required(VERSION 3.10)
 
-# GoogleTest requires at least C++11
+project(Matrix)
+
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Include directories
+include_directories(lib)
+
+# Create a library from the Matrix source files
+add_library(MatrixLib src/matrix.cpp)
+
+# Add the executable for the main program and link the library
+add_executable(Matrix src/main.cpp)
+target_link_libraries(Matrix MatrixLib)
+
+# Include FetchContent module
 include(FetchContent)
+
+# Download and configure GoogleTest
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG release-1.11.0
 )
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# Fetch the content and make it available
 FetchContent_MakeAvailable(googletest)
 
+# Link GoogleTest with the test executable
+add_executable(MatrixTest test/test.cpp)
+target_link_libraries(MatrixTest MatrixLib gtest_main)
+
+# Enable testing
 enable_testing()
 
-add_executable(
-    matrix
-    matrix.cpp
-    test
-    test.cpp
-)
-
-target_link_libraries(
-    matrix
-    gtest_main
-)
-
-include(GoogleTest)
-#gtest_discover_tests(test)
+# Add a test
+add_test(NAME MatrixTest COMMAND MatrixTest)
