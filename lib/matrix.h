@@ -8,13 +8,12 @@
 using namespace std;
 
 class Matrix {
-    public:
+    private:
         unsigned int m_rows; // Number of rows in the matrix
         unsigned int m_cols; // Number of columns in the matrix
         int initial_value = 0; // Initial value for all elements in the matrix
-
+    public:
         vector<vector<int>> m_matrix; // 2D vector to store the matrix elements
-
         /**
          * Constructor to create a matrix with specified dimensions and initial value.
          * @param rows The number of rows in the matrix.
@@ -66,6 +65,13 @@ class Matrix {
          * @param value The value to set.
          */
         void set_value_at(unsigned row, unsigned col, double value);
+
+        /**
+         * Get the value at the specified position in the matrix.
+         * @param row The row index.
+         * @param col The column index.
+         */
+        int get_value_at(unsigned row, unsigned col);
 
         /**
          * Transpose the matrix by swapping rows and columns.

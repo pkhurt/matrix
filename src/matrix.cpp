@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include "../lib/matrix.h"
+#include "matrix.h"
 
 using namespace std;
 
@@ -33,12 +33,18 @@ void Matrix::set_value_at(unsigned row, unsigned col, double value) {
     }
 }
 
+int Matrix::get_value_at(unsigned row, unsigned col) {
+    return this->m_matrix[row][col];
+}
+
 void Matrix::transpose() {
+    Matrix transposed_matrix(this->m_cols, this->m_rows, 0);
     for (int row = 0; row < this->m_rows; row++) {
         for (int col = 0; col < this->m_cols; col++) {
-            this->set_value_at(col, row, this->m_matrix[row][col]);
+            transposed_matrix.set_value_at(col, row, this->m_matrix[row][col]);
         }
     }
+    this->m_matrix = transposed_matrix.m_matrix;
 }
 
 Matrix Matrix::add_matrix(Matrix m2) {
