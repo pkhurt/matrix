@@ -33,7 +33,7 @@ void Matrix::set_value_at(unsigned row, unsigned col, double value) {
     }
 }
 
-void transpose() {
+void Matrix::transpose() {
     for (int row = 0; row < this->m_rows; row++) {
         for (int col = 0; col < this->m_cols; col++) {
             this->set_value_at(col, row, this->m_matrix[row][col]);
@@ -41,7 +41,7 @@ void transpose() {
     }
 }
 
-Matrix add_matrix(Matrix m2) {
+Matrix Matrix::add_matrix(Matrix m2) {
     Matrix result_m(this->get_cols(), this->get_rows(), 0); // initialize result matrix
     for (int row = 0; row < this->get_rows(); row++) {
         for (int col = 0; col < this->get_cols(); col++) {
@@ -51,8 +51,8 @@ Matrix add_matrix(Matrix m2) {
     return result_m;
 }
 
-Matrix multiply(Matrix matrix_term) {
-    Matrix<int> result_matrix(3, 3, 0);
+Matrix Matrix::multiply(Matrix matrix_term) {
+    Matrix result_matrix(3, 3, 0);
     int tmp_value = 0;
     for (int row = 0; row < this->get_rows(); row++) {
         for (int col = 0; col < matrix_term.get_cols(); col++) {
