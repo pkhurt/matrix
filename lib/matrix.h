@@ -14,12 +14,11 @@ class Matrix {
         int initial_value = 0; // Initial value for all elements in the matrix
     public:
         vector<vector<int>> m_matrix; // 2D vector to store the matrix elements
-        /**
-         * Constructor to create a matrix with specified dimensions and initial value.
-         * @param rows The number of rows in the matrix.
-         * @param cols The number of columns in the matrix.
-         * @param initial_value The initial value for all elements in the matrix.
-         */
+        
+        /// \brief Constructor to create a matrix with specified dimensions and initial value.
+        /// \param[in] rows The number of rows in the matrix.
+        /// \param[in] cols The number of columns in the matrix.
+        /// \param[in] initial_value The initial value for all elements in the matrix.
         Matrix(unsigned rows, unsigned cols, int initial_value) {
             this->m_rows = rows;
             this->m_cols = cols;
@@ -31,65 +30,48 @@ class Matrix {
             }
         }
 
-        /**
-         * Constructor to create a matrix from a 2D vector of values.
-         * @param values The 2D vector containing the values for the matrix.
-         */
+        /// \brief Constructor to create a matrix from a 2D vector of values.
+        /// \param[in] values The 2D vector containing the values for the matrix.
         Matrix(vector<vector<int>> values) {
             this->m_cols = values[0].size();
             this->m_rows = values.size();
             this->m_matrix = values;
         }
-
-        /**
-         * Get the number of rows in the matrix.
-         * @return The number of rows in the matrix.
-         */
+    
+        /// \brief Get the number of rows in the matrix.
+        /// \param[out] rows The number of rows in the matrix.
         int get_rows();
 
-        /**
-         * Get the number of columns in the matrix.
-         * @return The number of columns in the matrix.
-         */
+        
+        /// \brief Get the number of columns in the matrix.
+        /// \param[out] cols The number of columns in the matrix.
         int get_cols();
 
-        /**
-         * Print the matrix to the console appropriately.
-         */
+        /// \brief Print the matrix to the console appropriately.
         void print_matrix();
 
-        /**
-         * Set the value at the specified position in the matrix.
-         * @param row The row index.
-         * @param col The column index.
-         * @param value The value to set.
-         */
+        /// \brief Set the value at the specified position in the matrix.
+        /// \param[in] row The row index.
+        /// \param[in] col The column index.
+        /// \param[in] value The value to set.
         void set_value_at(unsigned row, unsigned col, double value);
 
-        /**
-         * Get the value at the specified position in the matrix.
-         * @param row The row index.
-         * @param col The column index.
-         */
+        /// \brief Get the value at the specified position in the matrix.
+        /// \param[in] row The row index.
+        /// \param[in] col The column index.
         int get_value_at(unsigned row, unsigned col);
 
-        /**
-         * Transpose the matrix by swapping rows and columns.
-         */
+        /// \brief Transpose the matrix by swapping rows and columns.
         void transpose();
 
-        /**
-         * Mathmatically add another matrix to this matrix and return the result.
-         * @param m2 The matrix to add.
-         * @return The result of the addition.
-         */
+        /// \brief Mathmatically add another matrix to this matrix and return the result.
+        /// \param[in] m2 The matrix to add.
+        /// \param[out] matrix The result of the addition.
         Matrix add_matrix(Matrix m2);
 
-        /**
-         * Multiply this matrix with another matrix and return the result.
-         * @param matrix_term The matrix to multiply with.
-         * @return The result of the multiplication.
-         */
+        /// \brief Multiply this matrix with another matrix and return the result.
+        /// \param[in] matrix_term The matrix to multiply with.
+        /// \param[out] matrix The result of the multiplication.
         Matrix multiply(Matrix matrix_term);
 
         // Overload operators
