@@ -69,3 +69,11 @@ Matrix Matrix::multiply(Matrix matrix_term) {
 
     return result_matrix;
 }
+
+Matrix Matrix::operator+(Matrix m2) {
+    return this->add_matrix(m2);
+}
+
+Matrix Matrix::operator*(Matrix m2) {
+    return this->multiply(m2);
+}

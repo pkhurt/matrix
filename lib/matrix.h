@@ -91,6 +91,10 @@ class Matrix {
          * @return The result of the multiplication.
          */
         Matrix multiply(Matrix matrix_term);
+
+        // Overload operators
+        Matrix operator+(Matrix m2);
+        Matrix operator*(Matrix m2);
 };
 
 class IdentityMatrix : public Matrix {
