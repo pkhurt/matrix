@@ -41,4 +41,8 @@ int main() {
     // test7 multiplication
     Matrix multi = m3.multiply(m3);
     multi.print_matrix();
+
+    std::cout << "Operator overloading" << std::endl;
+    Matrix operator_matrix = m1 + m2;
+    operator_matrix.print_matrix();
 }

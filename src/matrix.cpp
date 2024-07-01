@@ -58,6 +58,7 @@ Matrix Matrix::add_matrix(Matrix m2) {
 }
 
 Matrix Matrix::multiply(Matrix matrix_term) {
+    // TODO: check for different sizes and throw error
     Matrix result_matrix(3, 3, 0);
     int tmp_value = 0;
     for (int row = 0; row < this->get_rows(); row++) {
