@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Include directories
-include_directories(lib)
+include_directories(include)
 
 # Create a library from the Matrix source files
 add_library(MatrixLib src/matrix.cpp)
