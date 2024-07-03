@@ -12,11 +12,11 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y cmake g++ make
 
-    - name: Configure CMake
-      run: cmake -S . -B build
+    - name: Configure CMake and load cache
+      run: cd matrix && cmake -S . -B cmake_build
 
-    - name: Build
+    - name: CMake Build
       run: cmake --build build
 
-    - name: Test
+    - name: CMake Run C++ Test
       run: cd build && ctest
