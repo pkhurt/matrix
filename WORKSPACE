@@ -11,5 +11,8 @@ http_archive(
     strip_prefix = "googletest-release-1.11.0",
 )
 
-load("@gtest//bazel:setup.bzl", "gtest_setup")
-gtest_setup()
+# This allows us to use the gtest_main target in our BUILD files
+bind(
+    name = "gtest_main",
+    actual = "@gtest//:main",
+)

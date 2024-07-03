@@ -1,12 +1,13 @@
 cc_library(
     name = "matrix_lib",
-    srcs = ["Matrix.cpp"],
-    hdrs = ["../include/Matrix.h"],
+    srcs = ["matrix.cpp"],
+    hdrs = ["../include/matrix.h"],
+    includes = ["../include"]
     visibility = ["//visibility:public"],
 )
 
 cc_binary(
-    name = "matrix_main",
-    srcs = ["Main.cpp"],
+    name = "main",
+    srcs = ["main.cpp"],
     deps = [":matrix_lib"],
 )
