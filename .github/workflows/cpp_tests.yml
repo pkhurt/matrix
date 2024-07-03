@@ -16,7 +16,7 @@ jobs:
       run: cd matrix && cmake -S . -B cmake_build
 
     - name: CMake Build
-      run: cmake --build build
+      run: cmake --build cmake_build
 
     - name: CMake Run C++ Test
-      run: cd build && ctest
+      run: cd cmake_build && ctest
