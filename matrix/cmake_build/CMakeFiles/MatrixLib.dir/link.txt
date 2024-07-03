@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libMatrixLib.a CMakeFiles/MatrixLib.dir/src/matrix.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libMatrixLib.a

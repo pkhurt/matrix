@@ -1,4 +1,4 @@
-build/*
+# cmake files
 .vscode/*
 *.cmake
 CMakeLists.txt.user
@@ -13,3 +13,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
+
+# Bazel files
+MODULE.*
+bazel-*

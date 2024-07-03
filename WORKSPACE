@@ -1,7 +1,3 @@
-# This file could stay empty
-# It tells bazel that this is the main directory of the project
-workspace(name = "matrix_project")
-
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 # Fetch GoogleTest

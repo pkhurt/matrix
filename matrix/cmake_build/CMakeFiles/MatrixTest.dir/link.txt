@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/MatrixTest.dir/test/test.cpp.o -o MatrixTest  libMatrixLib.a lib/libgtest_main.a lib/libgtest.a
