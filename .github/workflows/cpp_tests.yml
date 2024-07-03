@@ -13,10 +13,10 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cmake g++ make
 
     - name: Configure CMake and load cache
-      run: cmake -S . -B cmake_build
+      run: cd matrix && cmake -S . -B cmake_build
 
     - name: CMake Build
-      run: cmake --build cmake_build
+      run: cd matrix && cmake --build cmake_build
 
     - name: CMake Run C++ Test
       run: cd cmake_build && ctest
