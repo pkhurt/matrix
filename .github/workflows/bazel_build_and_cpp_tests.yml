@@ -1,0 +1,24 @@
+name: Bazel C++ Tests
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Bazel
+      run: |
+        sudo apt update && sudo apt install apt-transport-https curl gnupg
+        curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
+        sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
+        echo "deb [signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+        sudo apt update && sudo apt install bazel
+
+    - name: Build with Bazel
+      run: bazel build //matrix:all
+
+    - name: Run tests with Bazel
+      run: bazel test //matrix:all --test_output=all

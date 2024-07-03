@@ -1,0 +1,22 @@
+name: CMake C++ Tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y cmake g++ make
+
+    - name: Configure CMake and load cache
+      run: cd matrix && cmake -S . -B cmake_build
+
+    - name: CMake Build
+      run: cd matrix && cmake --build cmake_build
+
+    - name: Run C++ Test
+      run: cd matrix/cmake_build && ctest
