@@ -18,7 +18,8 @@ jobs:
     - name: CMake Build
       run: cd matrix && cmake --build cmake_build
 
-    - name: CMake Run C++ Test
-      run: 
-        ls -ltr
-        cd cmake_build && ctest
+    - name: List files
+      run: ls -ltr
+
+    - name: Run C++ Test
+      run: cd cmake_build && ctest
