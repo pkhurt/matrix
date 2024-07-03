@@ -1,6 +1,6 @@
 # cmake files
 build/*
-cmake_build/*
+cmake_build/
 .vscode/*
 *.cmake
 CMakeLists.txt.user
