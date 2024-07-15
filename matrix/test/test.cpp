@@ -1,6 +1,12 @@
 #include <gtest/gtest.h>
 #include "matrix.h"
 
+class MatrixTestFixture : public ::testing::Test {
+    public:
+        Matrix m1 = Matrix({{3, 3, 0},{3, 3, 0},{3, 3, 0}});
+        Matrix m2 = Matrix({{3, 3, 0},{3, 3, 0},{3, 3, 0}});
+};
+
 TEST(MatrixTest, MatrixConstructor) {
     Matrix m(3, 3, 0);
     EXPECT_EQ(m.get_rows(), 3);
@@ -50,4 +56,23 @@ TEST(MatrixTest, MatrixTranspose) {
     EXPECT_EQ(m.get_value_at(2, 0), 3);
     EXPECT_EQ(m.get_value_at(2, 1), 6);
     EXPECT_EQ(m.get_value_at(2, 2), 9);
+}
+
+TEST_F(MatrixTestFixture, MatrixAddition) {
+    Matrix m3 = m1 + m2;
+    EXPECT_EQ(m3.get_value_at(0, 0), 6);
+    EXPECT_EQ(m3.get_value_at(0, 1), 6);
+    EXPECT_EQ(m3.get_value_at(0, 2), 0);
+    EXPECT_EQ(m3.get_value_at(1, 0), 6);
+    EXPECT_EQ(m3.get_value_at(1, 1), 6);
+    EXPECT_EQ(m3.get_value_at(1, 2), 0);
+    EXPECT_EQ(m3.get_value_at(2, 0), 6);
+    EXPECT_EQ(m3.get_value_at(2, 1), 6);
+    EXPECT_EQ(m3.get_value_at(2, 2), 0);
+}
+
+TEST_F(MatrixTestFixture, MatrixEquals) {
+    EXPECT_TRUE(m1 == m2);
+    m2.set_value_at(0, 0, 90);
+    EXPECT_FALSE(m1 == m2);
 }

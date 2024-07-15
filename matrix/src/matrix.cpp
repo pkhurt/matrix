@@ -78,3 +78,17 @@ Matrix Matrix::operator+(Matrix m2) {
 Matrix Matrix::operator*(Matrix m2) {
     return this->multiply(m2);
 }
+
+bool Matrix::operator== (Matrix m2) {
+    if (this->get_rows() != m2.get_rows() || this->get_cols() != m2.get_cols()) {
+        return false;
+    }
+    for (int row = 0; row < this->get_rows(); row++) {
+        for (int col = 0; col < this->get_cols(); col++) {
+            if (this->m_matrix[row][col] != m2.m_matrix[row][col]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}

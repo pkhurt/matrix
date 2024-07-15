@@ -64,6 +64,8 @@ class Matrix {
         /// \brief Transpose the matrix by swapping rows and columns.
         void transpose();
 
+        double determinant();
+
         /// \brief Mathmatically add another matrix to this matrix and return the result.
         /// \param[in] m2 The matrix to add.
         /// \param[out] matrix The result of the addition.
@@ -77,6 +79,7 @@ class Matrix {
         // Overload operators
         Matrix operator+(Matrix m2);
         Matrix operator*(Matrix m2);
+        bool operator== (Matrix m2);
 };
 
 class IdentityMatrix : public Matrix {
