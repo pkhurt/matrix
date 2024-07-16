@@ -71,6 +71,27 @@ Matrix Matrix::multiply(Matrix matrix_term) {
     return result_matrix;
 }
 
+// double Matrix::determinant() {
+//     double result = 0.0;
+    
+//     if (this->get_rows() != this->get_cols()) {
+//         throw std::invalid_argument("Matrix must be square to calculate determinant.");
+//     }
+//     if (this->get_rows() == 2) {
+//         return this->m_matrix[0][0] * this->m_matrix[1][1] - this->m_matrix[0][1] * this->m_matrix[1][0];
+//     }
+    
+//     Matrix sub_matrix = Matrix(this->get_rows() - 1, this->get_cols() - 1, 0);
+//     for (int col = 0; col < this->get_cols(); col++) {
+//         if (col % 2 == 0) {
+//             sub_matrix = this->get_sub_matrix(0, col);
+//             result += this->m_matrix[0][col] * this->determinant;
+//         } else {
+//             result -= this->m_matrix[0][col] * this->m_matrix[1][col] * this->m_matrix[2][col];
+//         }
+//         result = 
+// }
+
 Matrix Matrix::operator+(Matrix m2) {
     return this->add_matrix(m2);
 }

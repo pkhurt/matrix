@@ -7,6 +7,11 @@ class MatrixTestFixture : public ::testing::Test {
         Matrix m2 = Matrix({{3, 3, 0},{3, 3, 0},{3, 3, 0}});
 };
 
+// class MatrixTestDeterminant : public ::testing::Test {
+//     public:
+//         Matrix m1 = Matrix({{1,2},{3,4}});
+// };
+
 TEST(MatrixTest, MatrixConstructor) {
     Matrix m(3, 3, 0);
     EXPECT_EQ(m.get_rows(), 3);
@@ -76,3 +81,7 @@ TEST_F(MatrixTestFixture, MatrixEquals) {
     m2.set_value_at(0, 0, 90);
     EXPECT_FALSE(m1 == m2);
 }
+
+// TEST_F(MatrixTestDeterminant, MatrixDeterminant) {
+//     EXPECT_EQ(m1.determinant(), -2);
+// }
