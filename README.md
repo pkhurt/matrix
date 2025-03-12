@@ -75,6 +75,38 @@ The executable of the bazel files can be found in `bazel-bin/matrix/main`
 | **Extensibility**           | Custom modules and user-defined functions                                                                       | Custom rules and user-defined functions (macros)                                                                       |
 | **Use Case**                | C/C++ projects, legacy codebases, IDE integration, custom toolchains                                            | Large-scale projects, reproducibility, multi-language ecosystems, Google Cloud integration    |
 
+# Further informatoin to bazel
+Bazel general build command
+```
+bazel build //main:hello-world
+```
+* //main is the location directory where a bazel BUILD file is located. It's relative to the root of the workspace. Also, this is called the package name
+* hello-world in this case is the target name in the BUILD file
+
+**Execute the build binary without bazel:** `bazel-bin/main/hello-world`
+
+## Bazel Build dependency graph
+With this command one can print and dump the bazel build dependency graph
+```bash
+bazel query 'deps(//main:hello-world)' --otuput graph > graph.in
+dot -Tpng < graph.in > graph.png
+eog graph.png
+```
+To show the graph without implicit libs (external dependencies):
+```bash
+bazel query --noimplicit_deps 'deps(//main:hello-world)' --output_graph > graph.in
+```
+
+## The build file
+The build file is using starlark language: https://bazel.build/rules/language/
+
+Bazel for python: https://bazel.build/reference/be/python/
+
+### Keyword visibility in a BUILD file
+The keyword visibility in a BUILD file in bazel makes a traget explicitly visible for the package. 
+This is because by default targets are only visible to other targets in the same BUILD file. Bazel uses target visibility to prevent issues such as libraries containing implementation details leaking into public APIs.
+
+
 <hr>
 
 <div style="text-align: center;">
