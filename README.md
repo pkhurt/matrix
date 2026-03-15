@@ -106,7 +106,6 @@ Bazel for python: https://bazel.build/reference/be/python/
 The keyword visibility in a BUILD file in bazel makes a traget explicitly visible for the package. 
 This is because by default targets are only visible to other targets in the same BUILD file. Bazel uses target visibility to prevent issues such as libraries containing implementation details leaking into public APIs.
 
-
 <hr>
 
 <div style="text-align: center;">
